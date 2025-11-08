@@ -1,0 +1,13 @@
+{
+  "name": "domfichas",
+  "version": "1.0.0",
+  "description": "Gerenciador de Fichas de RPG - Sistema Cairn",
+  "scripts": {
+    "dev": "concurrently \"cd backend && python app.py\" \"cd frontend && python -m http.server 8000\"",
+    "start-backend": "cd backend && python app.py",
+    "start-frontend": "cd frontend && python -m http.server 8000"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

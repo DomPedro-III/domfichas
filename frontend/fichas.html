@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Fichas - DomFichas</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DomFichas</h1>
+            <div class="user-info">
+                <span id="username-display"></span>
+                <button id="logout-btn" class="btn btn-secondary">Sair</button>
+            </div>
+        </header>
+        
+        <main>
+            <div class="fichas-container">
+                <div class="fichas-header">
+                    <h2>Minhas Fichas</h2>
+                    <div class="fichas-actions">
+                        <button id="criar-ficha-btn" class="btn btn-primary">
+                            Criar Nova Ficha
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="fichas-grid">
+                    <div class="ficha-section">
+                        <h3>Personagens Jogadores (PJ)</h3>
+                        <div id="fichas-pj-list" class="fichas-list">
+                            <!-- Fichas PJ serão carregadas aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="ficha-section">
+                        <h3>Ameaças/NPCs</h3>
+                        <div id="fichas-ameaca-list" class="fichas-list">
+                            <!-- Fichas de ameaça serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Modal de criação de ficha -->
+        <div id="criar-ficha-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Criar Nova Ficha</h3>
+                <div class="modal-options">
+                    <button onclick="criarFichaPJ()" class="btn btn-primary">
+                        Ficha de Personagem (PJ)
+                    </button>
+                    <button onclick="criarFichaAmeaca()" class="btn btn-secondary">
+                        Ficha de Ameaça/NPC
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/auth.js"></script>
+    <script src="js/fichas.js"></script>
+</body>
+</html>
