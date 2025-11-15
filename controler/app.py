@@ -1,9 +1,8 @@
 import random
-from flask import Flask, request, jsonify, session, redirect, url_for
+from flask import Flask, request, jsonify, session
 from flask_cors import CORS
-from database import init_db, get_db
+from models.models import init_db, get_db
 from auth import auth_bp
-import models
 import json
 
 app = Flask(__name__)

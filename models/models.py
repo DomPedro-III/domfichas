@@ -1,5 +1,5 @@
-from database import get_db
-import json
+from models.database import get_db
+
 
 def init_models():
     db = get_db()

@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify, session
-from database import get_db
+from models.models import get_db
 import hashlib
-import secrets
 
 auth_bp = Blueprint('auth', __name__)
 
