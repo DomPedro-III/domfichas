@@ -1,3 +1,4 @@
+import random
 from flask import Flask, request, jsonify, session, redirect, url_for
 from flask_cors import CORS
 from database import init_db, get_db
