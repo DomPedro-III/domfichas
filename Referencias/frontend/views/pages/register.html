@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - DomFichas</title>
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/responsive.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>🎲 DomFichas</h1>
+                <p>Crie sua conta</p>
+            </div>
+
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Nome de Usuário</label>
+                    <input type="text" id="username" name="user" required minlength="3">
+                    <small class="form-help">Mínimo 3 caracteres</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="pass" required minlength="6">
+                    <small class="form-help">Mínimo 6 caracteres</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Senha</label>
+                    <input type="password" id="confirmPassword" name="confirm_pass" required minlength="6">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Cadastrar</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Já tem uma conta? <a href="../pages/login.html">Faça login</a></p>
+                <p><a href="../../index.html">← Voltar para a página inicial</a></p>
+            </div>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <script src="../../public/js/utils/Helpers.js"></script>
+    <script src="../../public/js/utils/Api.js"></script>
+    <script src="../../public/js/models/User.js"></script>
+    <script src="../../public/js/views/AuthView.js"></script>
+    <script src="../../public/js/controllers/AuthController.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const authController = new AuthController();
+            
+            document.getElementById('registerForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    user: document.getElementById('username').value,
+                    pass: document.getElementById('password').value,
+                    confirm_pass: document.getElementById('confirmPassword').value
+                };
+                
+                await authController.register(formData);
+            });
+        });
+    </script>
+</body>
+</html>

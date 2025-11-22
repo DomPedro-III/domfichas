@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+
+        
+        <!-- Bootstrap 5 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            body {
+                background: #f5f5f5;
+                padding: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="mb-4 text-center">Fichas</h2>
+            
+
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <table class="table table-striped table-hover">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>HP</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php foreach ($data as $items) { ?>
+                            <tr>
+                                <td><?php echo $items['id'] ?></td>
+                                <td><?php echo $items['name'] ?></td>
+                                <td><?php echo $items['hit_protection'] ?></td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" onclick="window.location.href = '/fixa?c=base&a=fixa&id=<?php echo $items['id']; ?>'">Editar</button>
+                                    <button class="btn btn-sm btn-danger" onclick="window.location.href = '/fixa?c=base&a=deletar&id=<?php echo $items['id']; ?>'">Deletar</button>
+                                    <button class="btn btn-sm btn-primary" onclick="window.location.href = '/fixa?c=base&a=ver&id=<?php echo $items['id']; ?>'">Visualizar</button>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-danger" onclick="logout()">Deslogar</button>
+                    <button class="btn btn-success"  onclick="window.location.href = '/fixa?c=base&a=fixa'">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function logout() {
+                localStorage.removeItem("logado");
+
+                window.location.href = "login.html";
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

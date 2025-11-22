@@ -1,0 +1,316 @@
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+    
+    .hero-section {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+        text-align: center;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .hero-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .characters-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .attributes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablets Pequenos (768px e abaixo) */
+@media (max-width: 768px) {
+    :root {
+        --font-size-2xl: 1.75rem;
+        --font-size-3xl: 2rem;
+        --font-size-4xl: 2.5rem;
+    }
+    
+    .navbar .container {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-md);
+    }
+    
+    .dashboard-header {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .sheet-header {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .sheet-actions {
+        justify-content: center;
+    }
+    
+    .characters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        margin: var(--spacing-md);
+        padding: var(--spacing-xl);
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .dice-controls {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .custom-controls {
+        grid-template-columns: 1fr;
+    }
+    
+    .history-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Mobile (480px e abaixo) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .header {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .logo h1 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero-text h2 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .auth-card {
+        padding: var(--spacing-xl);
+    }
+    
+    .attributes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .character-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dice-controls {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .dice-value {
+        font-size: 3rem;
+    }
+    
+    .character-actions {
+        flex-direction: column;
+    }
+    
+    .sheet-section {
+        padding: var(--spacing-lg);
+    }
+    
+    .modal-content {
+        margin: var(--spacing-sm);
+        padding: var(--spacing-lg);
+    }
+}
+
+/* Mobile Pequeno (360px e abaixo) */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .logo h1 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .hero-text h2 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .feature-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .dice-controls {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .attributes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .character-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Orientação Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .auth-page {
+        padding: var(--spacing-sm);
+        align-items: flex-start;
+    }
+    
+    .auth-container {
+        max-width: 90%;
+    }
+    
+    .auth-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .hero-section {
+        min-height: auto;
+        padding: var(--spacing-xl) 0;
+    }
+}
+
+/* Modo Escuro (opcional - para futura implementação) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1a1a;
+        --surface-color: #2d2d2d;
+        --surface-dark: #3d3d3d;
+        --text-primary: #ffffff;
+        --text-secondary: #a0a0a0;
+        --text-muted: #666666;
+        --border-color: #404040;
+        --border-light: #333333;
+        --border-dark: #555555;
+    }
+    
+    .character-card,
+    .sheet-section,
+    .dice-container,
+    .history-section,
+    .feature-card,
+    .auth-card {
+        border-color: var(--border-color);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea,
+    .attribute-value {
+        background-color: var(--surface-dark);
+        border-color: var(--border-color);
+        color: var(--text-primary);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus,
+    .attribute-value:focus {
+        border-color: var(--primary-color);
+    }
+}
+
+/* Impressão */
+@media print {
+    .navbar,
+    .footer,
+    .btn,
+    .sheet-actions,
+    .history-controls {
+        display: none !important;
+    }
+    
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+    
+    .character-sheet {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    
+    .sheet-section {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+        margin-bottom: 1rem;
+    }
+    
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .feature-icon,
+    .empty-icon {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .dice-result::before,
+    .dice-btn::before {
+        animation: none !important;
+    }
+}

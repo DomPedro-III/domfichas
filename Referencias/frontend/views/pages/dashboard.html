@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - DomFichas</title>
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/responsive.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>🎲 DomFichas</h2>
+        </div>
+        
+        <div class="nav-links">
+            <span class="user-welcome">Olá, <span id="userName" class="user-name"></span>!</span>
+            <a href="dashboard.html" class="nav-link active">Minhas Fichas</a>
+            <a href="dice-roller.html" class="nav-link">Rolagem de Dados</a>
+            <button id="logoutBtn" class="btn btn-outline">Sair</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="dashboard-title">
+                <h1>Minhas Fichas de Personagem</h1>
+                <p>Gerencie suas fichas do sistema Cairn</p>
+            </div>
+            <button id="newCharacterBtn" class="btn btn-primary">Nova Ficha</button>
+        </header>
+
+        <div class="characters-grid" id="charactersGrid">
+            <div class="empty-state">
+                <div class="empty-icon">📝</div>
+                <h3>Nenhuma ficha encontrada</h3>
+                <p>Comece criando sua primeira ficha de personagem</p>
+                <button id="createFirstCharacter" class="btn btn-primary">Criar Primeira Ficha</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para nova ficha -->
+    <div id="characterModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Nova Ficha de Personagem</h3>
+                <button id="closeModal" class="close-btn">&times;</button>
+            </div>
+            <form id="characterForm">
+                <div class="form-group">
+                    <label for="characterName">Nome do Personagem *</label>
+                    <input type="text" id="characterName" name="name" required minlength="2" maxlength="100">
+                    <small class="form-help">Mínimo 2 caracteres, máximo 100</small>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="characterHP">Pontos de Vida</label>
+                        <input type="number" id="characterHP" name="hi_protection" value="10" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="characterHPMax">PV Máximo</label>
+                        <input type="number" id="characterHPMax" name="hi_protection_max" value="10" min="0">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="copperCoins">Moedas de Cobre</label>
+                        <input type="number" id="copperCoins" name="copper_coins" value="0" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="silverCoins">Moedas de Prata</label>
+                        <input type="number" id="silverCoins" name="silver_coins" value="0" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goldCoins">Moedas de Ouro</label>
+                        <input type="number" id="goldCoins" name="golden_coins" value="0" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="characterNotes">Anotações</label>
+                    <textarea id="characterNotes" name="notes" rows="3" placeholder="Anotações sobre o personagem..."></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" id="cancelBtn" class="btn btn-outline">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Criar Personagem</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="message" class="message hidden"></div>
+
+    <script src="../../public/js/utils/Helpers.js"></script>
+    <script src="../../public/js/utils/Api.js"></script>
+    <script src="../../public/js/models/User.js"></script>
+    <script src="../../public/js/models/Character.js"></script>
+    <script src="../../public/js/views/AuthView.js"></script>
+    <script src="../../public/js/views/CharacterView.js"></script>
+    <script src="../../public/js/controllers/AuthController.js"></script>
+    <script src="../../public/js/controllers/CharacterController.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const authController = new AuthController();
+            const characterController = new CharacterController();
+            
+            // Carregar dados do usuário
+            const user = authController.getCurrentUser();
+            if (user) {
+                document.getElementById('userName').textContent = user.user;
+            }
+            
+            // Carregar personagens
+            characterController.loadUserCharacters();
+            
+            // Configurar eventos
+            document.getElementById('newCharacterBtn').addEventListener('click', () => {
+                characterController.showCreateModal();
+            });
+            
+            document.getElementById('createFirstCharacter').addEventListener('click', () => {
+                characterController.showCreateModal();
+            });
+            
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                authController.logout();
+            });
+        });
+    </script>
+</body>
+</html>

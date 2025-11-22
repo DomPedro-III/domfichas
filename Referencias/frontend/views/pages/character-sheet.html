@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Personagem - DomFichas</title>
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/responsive.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>🎲 DomFichas</h2>
+        </div>
+        
+        <div class="nav-links">
+            <a href="dashboard.html" class="nav-link">← Voltar ao Dashboard</a>
+            <a href="dice-roller.html" class="nav-link">Rolagem de Dados</a>
+            <button id="logoutBtn" class="btn btn-outline">Sair</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="sheet-header">
+            <div class="sheet-info">
+                <h1 id="characterName">Carregando...</h1>
+                <p id="characterDetails" class="character-meta">Sistema Cairn</p>
+            </div>
+            <div class="sheet-actions">
+                <button id="editSheetBtn" class="btn btn-outline">Editar Ficha</button>
+                <button id="saveSheetBtn" class="btn btn-primary hidden">Salvar Alterações</button>
+                <button id="cancelEditBtn" class="btn btn-outline hidden">Cancelar</button>
+                <button id="deleteSheetBtn" class="btn btn-danger">Excluir Ficha</button>
+            </div>
+        </header>
+
+        <div class="character-sheet">
+            <!-- Seção de Atributos -->
+            <div class="sheet-section">
+                <h3>📊 Atributos</h3>
+                <div class="attributes-grid" id="attributesGrid">
+                    <div class="attribute">
+                        <label>Força</label>
+                        <input type="number" class="attribute-value" data-attribute="strength" value="10" readonly>
+                        <span class="attribute-max">/ 10</span>
+                    </div>
+                    <div class="attribute">
+                        <label>Destreza</label>
+                        <input type="number" class="attribute-value" data-attribute="dexterity" value="10" readonly>
+                        <span class="attribute-max">/ 10</span>
+                    </div>
+                    <div class="attribute">
+                        <label>Constituição</label>
+                        <input type="number" class="attribute-value" data-attribute="constitution" value="10" readonly>
+                        <span class="attribute-max">/ 10</span>
+                    </div>
+                    <div class="attribute">
+                        <label>Inteligência</label>
+                        <input type="number" class="attribute-value" data-attribute="intelligence" value="10" readonly>
+                        <span class="attribute-max">/ 10</span>
+                    </div>
+                    <div class="attribute">
+                        <label>Sabedoria</label>
+                        <input type="number" class="attribute-value" data-attribute="wisdom" value="10" readonly>
+                        <span class="attribute-max">/ 10</span>
+                    </div>
+                    <div class="attribute">
+                        <label>Carisma</label>
+                        <input type="number" class="attribute-value" data-attribute="charisma" value="10" readonly>
+                        <span class="attribute-max">/ 10</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <!-- Informações Básicas -->
+                <div class="sheet-section">
+                    <h3>ℹ️ Informações Básicas</h3>
+                    <div class="form-group">
+                        <label>Pontos de Vida</label>
+                        <input type="number" id="hitPoints" name="hi_protection" value="10" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>PV Máximo</label>
+                        <input type="number" id="hitPointsMax" name="hi_protection_max" value="10" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Classe de Armadura</label>
+                        <input type="number" id="armorClass" value="10" readonly>
+                    </div>
+                </div>
+
+                <!-- Economia -->
+                <div class="sheet-section">
+                    <h3>💰 Economia</h3>
+                    <div class="form-group">
+                        <label>Moedas de Cobre</label>
+                        <input type="number" id="copperCoins" name="copper_coins" value="0" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Moedas de Prata</label>
+                        <input type="number" id="silverCoins" name="silver_coins" value="0" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Moedas de Ouro</label>
+                        <input type="number" id="goldCoins" name="golden_coins" value="0" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Habilidades -->
+            <div class="sheet-section">
+                <h3>🎯 Habilidades & Talentos</h3>
+                <div id="skillsList">
+                    <div class="empty-skills">
+                        <p>Nenhuma habilidade cadastrada</p>
+                        <button id="addSkillBtn" class="btn btn-outline hidden">Adicionar Habilidade</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventário -->
+            <div class="sheet-section">
+                <h3>🎒 Inventário</h3>
+                <div id="inventoryList">
+                    <div class="empty-inventory">
+                        <p>Inventário vazio</p>
+                        <button id="addItemBtn" class="btn btn-outline hidden">Adicionar Item</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anotações -->
+            <div class="sheet-section">
+                <h3>📝 Anotações</h3>
+                <textarea id="characterNotes" name="notes" rows="6" readonly placeholder="Anotações sobre o personagem, história, objetivos..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div id="confirmModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmar Exclusão</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir esta ficha? Esta ação não pode ser desfeita.</p>
+            </div>
+            <div class="modal-actions">
+                <button id="cancelDelete" class="btn btn-outline">Cancelar</button>
+                <button id="confirmDelete" class="btn btn-danger">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="message" class="message hidden"></div>
+
+    <script src="../../public/js/utils/Helpers.js"></script>
+    <script src="../../public/js/utils/Api.js"></script>
+    <script src="../../public/js/models/User.js"></script>
+    <script src="../../public/js/models/Character.js"></script>
+    <script src="../../public/js/views/AuthView.js"></script>
+    <script src="../../public/js/views/CharacterView.js"></script>
+    <script src="../../public/js/controllers/AuthController.js"></script>
+    <script src="../../public/js/controllers/CharacterController.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const authController = new AuthController();
+            const characterController = new CharacterController();
+            
+            // Obter ID do personagem da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const characterId = urlParams.get('id');
+            
+            if (characterId) {
+                characterController.loadCharacter(characterId);
+            } else {
+                window.location.href = 'dashboard.html';
+            }
+            
+            // Configurar eventos
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                authController.logout();
+            });
+            
+            document.getElementById('editSheetBtn').addEventListener('click', () => {
+                characterController.enableEditing();
+            });
+            
+            document.getElementById('saveSheetBtn').addEventListener('click', () => {
+                characterController.saveCharacter();
+            });
+            
+            document.getElementById('cancelEditBtn').addEventListener('click', () => {
+                characterController.cancelEditing();
+            });
+            
+            document.getElementById('deleteSheetBtn').addEventListener('click', () => {
+                characterController.showDeleteModal(characterId);
+            });
+            
+            document.getElementById('confirmDelete').addEventListener('click', () => {
+                characterController.deleteCharacter(characterId);
+            });
+            
+            document.getElementById('cancelDelete').addEventListener('click', () => {
+                document.getElementById('confirmModal').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
