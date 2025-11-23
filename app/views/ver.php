@@ -13,9 +13,15 @@
                     background: #f5f5f5;
                     padding: 30px;
                 }
+                .containerBox {
+                    display: grid;
+                    grid-template-columns: 50% 50%;
+                }
                 .card-card {
                     max-width: 700px;
                 }
+
+                /* dados hist */
                 .historico-rolagens {
                     max-height: 400px;
                     overflow-y: auto;
@@ -34,7 +40,7 @@
             </style>
     </head>
     <body>
-        <div class="row ">
+        <div class="containerBox">
             <div class="justify-content-center">
                 <div class="container d-block justify-content-center">
                     <div class="card card-card shadow p-4">
@@ -83,30 +89,19 @@
                                 <label class="card-label"><strong>Notes</strong></label>
                             </div>
                             <div class="row mb-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <?php echo($sheets['notes'])?>
-                                    </div>
-                                </div>
+                                <textarea disabled class="formcontrol" ><?php echo($sheets['notes'])?></textarea>
                             </div>
 
                             <div class="row mb-3">
                                 <label class="card-label"><strong>Inventário</strong></label>
                             </div>
                             <div class="row mb-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <?php echo($sheets['inventory'])?>
-                                    </div>
-                                </div>
+                                <textarea disabled class="formcontrol" ><?php echo($sheets['inventory'])?></textarea>
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-md-6">
+                                <div class="col-md">
                                     <button class="btn btn-primary w-100" onclick="window.location.href = '/?c=auth&a=dashboard'">Voltar</button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-primary w-100" onclick="window.location.href = '/?c=base&a=inventario&id=<?php echo($sheets['id'])?>'">Inventário</button>
                                 </div>
                             </div>
 

@@ -31,7 +31,7 @@ class Sheets {
                 `copper_coins` = '" . $_POST['copper_coins'] . "',
                 `silver_coins` = '" . $_POST['silver_coins'] . "',
                 `golden_coins` = '" . $_POST['golden_coins'] . "',
-                `notes` = '" . $_POST['notes'] . "'
+                `notes` = '" . $_POST['notes'] . "',
                 `inventory` = '" . $_POST['inventory'] . "'
             WHERE (`id` = '" . $_POST['id'] . "');
         ");

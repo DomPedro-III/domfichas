@@ -34,31 +34,31 @@
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label"><strong>Força</strong></label>
-                            <input required type="number" class="form-control" name="forca" value="<?php echo isset($sheets['forca']) ? $sheets['forca'] : null; ?>" placeholder="Quantidade">
+                            <input required type="number" class="form-control" name="forca" value="<?php echo isset($sheets['str']) ? $sheets['str'] : null; ?>" placeholder="Quantidade">
                         </div>
 
                         <div class="col-md-4">
                             <label class="form-label"><strong>Destreza</strong></label>
-                            <input required type="number" class="form-control" name="destreza" value="<?php echo isset($sheets['destreza']) ? $sheets['destreza'] : null; ?>" placeholder="Quantidade">
+                            <input required type="number" class="form-control" name="destreza" value="<?php echo isset($sheets['dex']) ? $sheets['dex'] : null; ?>" placeholder="Quantidade">
                         </div>
 
                         <div class="col-md-4">
                             <label class="form-label"><strong>Vontade</strong></label>
-                            <input required type="number" class="form-control" name="vontade" value="<?php echo isset($sheets['vontade']) ? $sheets['vontade'] : null; ?>" placeholder="Quantidade">
+                            <input required type="number" class="form-control" name="vontade" value="<?php echo isset($sheets['wil']) ? $sheets['wil'] : null; ?>" placeholder="Quantidade">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label"><strong>Força Max</strong></label>
-                            <input required type="number" class="form-control" name="forca_max" value="<?php echo isset($sheets['forca_max']) ? $sheets['forca_max'] : null; ?>" placeholder="Quantidade">
+                            <input required type="number" class="form-control" name="forca_max" value="<?php echo isset($sheets['str_max']) ? $sheets['str_max'] : null; ?>" placeholder="Quantidade">
                         </div>
                         <div class="col-md-4">
                             <label class="form-label"><strong>Destreza Max</strong></label>
-                            <input required type="number" class="form-control" name="destreza_max" value="<?php echo isset($sheets['destreza_max']) ? $sheets['destreza_max'] : null; ?>" placeholder="Quantidade">
+                            <input required type="number" class="form-control" name="destreza_max" value="<?php echo isset($sheets['dex_max']) ? $sheets['dex_max'] : null; ?>" placeholder="Quantidade">
                         </div>
                         <div class="col-md-4">
                             <label class="form-label"><strong>Vontade Max</strong></label>
-                            <input required type="number" class="form-control" name="vontade_max" value="<?php echo isset($sheets['vontade_max']) ? $sheets['vontade_max'] : null; ?>" placeholder="Quantidade">
+                            <input required type="number" class="form-control" name="vontade_max" value="<?php echo isset($sheets['wil_max']) ? $sheets['wil_max'] : null; ?>" placeholder="Quantidade">
                         </div>
                     </div>
 
