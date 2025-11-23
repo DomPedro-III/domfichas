@@ -23,6 +23,8 @@ class BaseController extends Controller {
 
         if (!empty($_POST['id'])) {
             Sheets::updateSheet();
+            header('Location: /?c=base&a=ver&id='.$_POST['id']);
+            exit;
         } else {
             Sheets::addSheet();
         }
@@ -55,27 +57,27 @@ class BaseController extends Controller {
         $this->view('inventario', ['id' => $_GET['id']]); 
     }
 
-    public function cadastroInventario() {
-        $this->checkSession();
+    // public function cadastroInventario() {
+    //     $this->checkSession();
 
-        if (!empty($_POST['id'])) {
-            Inventory::updateInventory();
-        } else {
-            Inventory::addInventory();
-        }
+    //     if (!empty($_POST['id'])) {
+    //         Inventory::updateInventory();
+    //     } else {
+    //         Inventory::addInventory();
+    //     }
         
-        header('Location: /?c=auth&a=dashboard');
-        exit;
-    }
+    //     header('Location: /?c=auth&a=dashboard');
+    //     exit;
+    // }
 
-    public function deletarInventario() {
-        $this->checkSession();
+    // public function deletarInventario() {
+    //     $this->checkSession();
 
-        Inventory::deleteInventory();
+    //     Inventory::deleteInventory();
 
-        $auth = new AuthController();
-        $auth->dashboard();
-    }
+    //     $auth = new AuthController();
+    //     $auth->dashboard();
+    // }
 
     public function salvarDados() {
         $this->checkSession();

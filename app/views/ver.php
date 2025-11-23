@@ -100,8 +100,14 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-md">
+                                <div class="col-md-4">
                                     <button class="btn btn-primary w-100" onclick="window.location.href = '/?c=auth&a=dashboard'">Voltar</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-warning w-100" onclick="window.location.href = '/fixa?c=base&a=fixa&id=<?php echo $sheets['id']; ?>'">Editar</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-danger w-100" onclick="window.location.href = '/fixa?c=base&a=deletar&id=<?php echo $sheets['id']; ?>'">Deletar</button>                                    
                                 </div>
                             </div>
 

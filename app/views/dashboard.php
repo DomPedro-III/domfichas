@@ -27,8 +27,10 @@
                     <table class="table table-striped table-hover">
                         <thead class="table-primary">
                             <tr>
-                                <!-- <th>#</th> -->
                                 <th>Nome</th>
+                                <th>For</th>
+                                <th>Des</th>
+                                <th>Von</th>
                                 <th>HP</th>
                                 <th>Ações</th>
                             </tr>
@@ -37,12 +39,12 @@
                         <tbody>
                             <?php foreach ($data as $items) { ?>
                             <tr>
-                                <!-- <td><?php echo $items['id'] ?></td> -->
                                 <td><?php echo $items['name'] ?></td>
+                                <td><?php echo $items['str'] ?></td>
+                                <td><?php echo $items['dex'] ?></td>
+                                <td><?php echo $items['wil'] ?></td>
                                 <td><?php echo $items['hit_protection'] ?></td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning" onclick="window.location.href = '/fixa?c=base&a=fixa&id=<?php echo $items['id']; ?>'">Editar</button>
-                                    <button class="btn btn-sm btn-danger" onclick="window.location.href = '/fixa?c=base&a=deletar&id=<?php echo $items['id']; ?>'">Deletar</button>
                                     <button class="btn btn-sm btn-primary" onclick="window.location.href = '/fixa?c=base&a=ver&id=<?php echo $items['id']; ?>'">Visualizar</button>
                                 </td>
                             </tr>
