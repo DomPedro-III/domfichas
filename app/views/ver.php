@@ -29,6 +29,18 @@
                         </div>
 
                         <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="card-label"><strong>Força:</strong> <?php echo($sheets['str'])?> | <?php echo($sheets['str_max'])?></label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="card-label"><strong>Destreza:</strong> <?php echo($sheets['dex'])?> | <?php echo($sheets['dex_max'])?></label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="card-label"><strong>Vontade:</strong> <?php echo($sheets['wil'])?> | <?php echo($sheets['wil_max'])?></label>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="card-label"><strong>HP:</strong> <?php echo($sheets['hit_protection'])?> | <?php echo($sheets['hit_protection_max'])?></label>
                             </div>
@@ -63,6 +75,17 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label class="card-label"><strong>Inventário</strong></label>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <?php echo($sheets['inventory'])?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <div class="col-md-6">
                                 <button class="btn btn-primary w-100" onclick="window.location.href = '/?c=auth&a=dashboard'">Voltar</button>
                             </div>
@@ -78,7 +101,8 @@
         <div class="container justify-content-center">
             <div class="container d-block justify-content-center">
                 <div class="card card-card shadow p-4">
-                    <h3 class="text-center mb-4">Inventário</h3>
+                    <h3 class="text-center mb-4">Dados</h3>
+                    
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@
                     <table class="table table-striped table-hover">
                         <thead class="table-primary">
                             <tr>
-                                <th>#</th>
+                                <!-- <th>#</th> -->
                                 <th>Nome</th>
                                 <th>HP</th>
                                 <th>Ações</th>
@@ -37,7 +37,7 @@
                         <tbody>
                             <?php foreach ($data as $items) { ?>
                             <tr>
-                                <td><?php echo $items['id'] ?></td>
+                                <!-- <td><?php echo $items['id'] ?></td> -->
                                 <td><?php echo $items['name'] ?></td>
                                 <td><?php echo $items['hit_protection'] ?></td>
                                 <td>
@@ -54,13 +54,17 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script>
             function logout() {
                 localStorage.removeItem("logado");
 
-                window.location.href = "login.html";
+                window.location.href = "login";
             }
+            $('#delete').on('shown.bs.modal', function () {
+              $('#myInput').trigger('focus')
+            })
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

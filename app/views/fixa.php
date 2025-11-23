@@ -28,42 +28,73 @@
 
                     <div class="mb-3">
                         <label class="form-label"><strong>Nome</strong></label>
-                        <input type="text" class="form-control" name="name" value="<?php echo isset($sheets['name']) ? $sheets['name'] : null; ?>" placeholder="Digite o nome">
+                        <input required type="text" class="form-control" name="name" value="<?php echo isset($sheets['name']) ? $sheets['name'] : null; ?>" placeholder="Digite o nome">
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Força</strong></label>
+                            <input required type="number" class="form-control" name="forca" value="<?php echo isset($sheets['forca']) ? $sheets['forca'] : null; ?>" placeholder="Quantidade">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Destreza</strong></label>
+                            <input required type="number" class="form-control" name="destreza" value="<?php echo isset($sheets['destreza']) ? $sheets['destreza'] : null; ?>" placeholder="Quantidade">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Vontade</strong></label>
+                            <input required type="number" class="form-control" name="vontade" value="<?php echo isset($sheets['vontade']) ? $sheets['vontade'] : null; ?>" placeholder="Quantidade">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Força Max</strong></label>
+                            <input required type="number" class="form-control" name="forca_max" value="<?php echo isset($sheets['forca_max']) ? $sheets['forca_max'] : null; ?>" placeholder="Quantidade">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Destreza Max</strong></label>
+                            <input required type="number" class="form-control" name="destreza_max" value="<?php echo isset($sheets['destreza_max']) ? $sheets['destreza_max'] : null; ?>" placeholder="Quantidade">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Vontade Max</strong></label>
+                            <input required type="number" class="form-control" name="vontade_max" value="<?php echo isset($sheets['vontade_max']) ? $sheets['vontade_max'] : null; ?>" placeholder="Quantidade">
+                        </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label"><strong>HIT Protection</strong></label>
-                            <input type="number" class="form-control" name="hit_protection" value="<?php echo isset($sheets['hit_protection']) ? $sheets['hit_protection'] : null; ?>" placeholder="Valor atual">
+                            <input required type="number" class="form-control" name="hit_protection" value="<?php echo isset($sheets['hit_protection']) ? $sheets['hit_protection'] : null; ?>" placeholder="Valor atual">
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label"><strong>HIT Protection Máx</strong></label>
-                            <input type="number" class="form-control" name="hit_protection_max" value="<?php echo isset($sheets['hit_protection_max']) ? $sheets['hit_protection_max'] : null; ?>" placeholder="Valor máximo">
+                            <input required type="number" class="form-control" name="hit_protection_max" value="<?php echo isset($sheets['hit_protection_max']) ? $sheets['hit_protection_max'] : null; ?>" placeholder="Valor máximo">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label"><strong>Armadura</strong></label>
-                            <input type="number" class="form-control" name="armor" value="<?php echo isset($sheets['armor']) ? $sheets['armor'] : null; ?>" placeholder="Valor atual">
+                            <input required type="number" class="form-control" name="armor" value="<?php echo isset($sheets['armor']) ? $sheets['armor'] : 0; ?>" placeholder="Valor atual">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label class="form-label"><strong>Copper Coins</strong></label>
-                            <input type="number" class="form-control" name="copper_coins" value="<?php echo isset($sheets['copper_coins']) ? $sheets['copper_coins'] : null; ?>" placeholder="Quantidade">
+                            <input type="number" class="form-control" name="copper_coins" value="<?php echo isset($sheets['copper_coins']) ? $sheets['copper_coins'] : 0; ?>" placeholder="Quantidade">
                         </div>
 
                         <div class="col-md-4">
                             <label class="form-label"><strong>Silver Coins</strong></label>
-                            <input type="number" class="form-control" name="silver_coins" value="<?php echo isset($sheets['silver_coins']) ? $sheets['silver_coins'] : null; ?>" placeholder="Quantidade">
+                            <input type="number" class="form-control" name="silver_coins" value="<?php echo isset($sheets['silver_coins']) ? $sheets['silver_coins'] : 0; ?>" placeholder="Quantidade">
                         </div>
 
                         <div class="col-md-4">
                             <label class="form-label"><strong>Golden Coins</strong></label>
-                            <input type="number" class="form-control" name="golden_coins" value="<?php echo isset($sheets['golden_coins']) ? $sheets['golden_coins'] : null; ?>" placeholder="Quantidade">
+                            <input type="number" class="form-control" name="golden_coins" value="<?php echo isset($sheets['golden_coins']) ? $sheets['golden_coins'] : 0; ?>" placeholder="Quantidade">
                         </div>
                     </div>
 
@@ -74,7 +105,7 @@
 
                     <div class="mb-3">
                         <label class="form-label"><strong>Inventário</strong></label>
-                        <textarea class="form-control" name="inventario" rows="3" placeholder="Insira seu equipamento"><?php echo isset($sheets['notes']) ? $sheets['notes'] : null; ?></textarea>
+                        <textarea class="form-control" name="inventory" rows="3" placeholder="Insira seu equipamento"><?php echo isset($sheets['inventory']) ? $sheets['inventory'] : null; ?></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Salvar</button>
