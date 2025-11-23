@@ -2,6 +2,7 @@
 require_once 'app/models/Sheets.php';
 require_once 'app/controllers/AuthController.php';
 require_once 'app/models/Inventory.php';
+require_once 'app/models/Dados.php';
 
 class BaseController extends Controller {
     public function fixa() {
@@ -43,7 +44,8 @@ class BaseController extends Controller {
         $this->checkSession();
 
         $sheets = Sheets::getSheet();
-        $this->view('ver', ['sheets' => $sheets]);
+        $dice_hist = Dados::getList();
+        $this->view('ver', ['sheets' => $sheets, 'dice_hist' => $dice_hist]);
         
     }
 
@@ -73,5 +75,10 @@ class BaseController extends Controller {
 
         $auth = new AuthController();
         $auth->dashboard();
+    }
+
+    public function salvarDados() {
+        $this->checkSession();
+        Dados::addDados();
     }
 }
