@@ -23,6 +23,11 @@ class AuthController extends Controller {
         $this->view('login', ['erro' => $erro ?? null]);
     }
 
+    public function goLogin() {
+
+        $this->view('login'); 
+    }
+
     public function registro() {
 
         $this->view('registro'); 
