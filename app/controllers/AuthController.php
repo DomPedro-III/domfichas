@@ -34,28 +34,33 @@ class AuthController extends Controller {
     }
 
     public static function addRegistro() {
-        $db = Database::connect();
-        $stmt = $db->prepare("
-            INSERT INTO users (
-            user,
-            pass
-            ) VALUES (
-                '" . $_POST['user'] . "',
-                '" . $_POST['pass'] . "'
-            );
-        "); 
+        try{
+            $db = Database::connect();
+            $stmt = $db->prepare("
+                INSERT INTO users (
+                user,
+                pass
+                ) VALUES (
+                    '" . $_POST['user'] . "',
+                    '" . $_POST['pass'] . "'
+                );
+            "); 
 
-        $stmt->execute();
-        $stmt->fetch(PDO::FETCH_ASSOC);  
+            $stmt->execute();
+            $stmt->fetch(PDO::FETCH_ASSOC);  
 
-        $user = User::login($_POST['user'], $_POST['pass']);
+            $user = User::login($_POST['user'], $_POST['pass']);
 
-            if ($user) {
-                session_start();
-                $_SESSION['user'] = $user;
-                header('Location: /?c=auth&a=dashboard');
-                exit;
-            }
+                if ($user) {
+                    session_start();
+                    $_SESSION['user'] = $user;
+                    header('Location: /?c=auth&a=dashboard');
+                    exit;
+                }
+        }catch(Exception $e){
+            header('Location: /?c=auth&a=registro&erro=1');
+        }
+        
     }
 
 

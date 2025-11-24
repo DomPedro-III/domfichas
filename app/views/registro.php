@@ -21,6 +21,9 @@
     <body class="d-flex justify-content-center align-items-center">
         <form action="/?c=auth&a=addRegistro" method="POST">
             <h3 class="text-center mb-3">Registro</h3>
+                <?php if (!empty($_GET['erro'])): ?>
+                <p style="color:red;"> Ocorreu um erro inesperado.</p>
+                <?php endif; ?>
 
             <?php if (!empty($erro)): ?>
             <p style="color:red;"><?= $erro ?></p>

@@ -70,10 +70,3 @@ class BaseController extends Controller {
         Dados::addDados();
     }
 }
-
-
-        // try{
-
-        // }catch(Exception $e){
-
-        // }

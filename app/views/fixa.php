@@ -3,9 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fixa</title>
-
-        <!-- Bootstrap 5 -->
+        <title>Ficha</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
             <style>
@@ -22,9 +20,9 @@
         <div class="container d-flex justify-content-center">
             <div class="card form-card shadow p-4">
                 <h3 class="text-center mb-4">Cadastro</h3>
-                        <?php if (!empty($_GET['erro'])): ?>
-                        <p style="color:red;"> Ocorreu um erro inesperado.</p>
-                        <?php endif; ?>
+                <?php if (!empty($_GET['erro'])): ?>
+                <p style="color:red;"> Ocorreu um erro inesperado.</p>
+                <?php endif; ?>
 
                 <form action="/?c=base&a=cadastro" method="POST">
                     <input type="hidden" class="form-control" name="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : null; ?>">
