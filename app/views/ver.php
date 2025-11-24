@@ -45,7 +45,6 @@
                 <div class="container d-block justify-content-center">
                     <div class="card card-card shadow p-4">
                         <h3 class="text-center mb-4">Ficha</h3>
-
                             <div class="mb-3">
                                 <label class="card-label"><strong>Nome:</strong> <?php echo ($sheets['name'])?></label>
                             </div>
@@ -73,15 +72,15 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-4">
-                                    <label class="card-label"><strong>CC:</strong> <?php echo($sheets['copper_coins'])?></label>
+                                    <label class="card-label"><strong>Moedas de Cobre:</strong> <?php echo($sheets['copper_coins'])?></label>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="card-label"><strong>SC:</strong> <?php echo($sheets['silver_coins'])?></label>
+                                    <label class="card-label"><strong>Moedas de Prata:</strong> <?php echo($sheets['silver_coins'])?></label>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="card-label"><strong>GC:</strong> <?php echo($sheets['golden_coins'])?></label>
+                                    <label class="card-label"><strong>Moedas de Ouro:</strong> <?php echo($sheets['golden_coins'])?></label>
                                 </div>
                             </div>
 

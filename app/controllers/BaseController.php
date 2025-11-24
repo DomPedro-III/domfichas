@@ -19,18 +19,26 @@ class BaseController extends Controller {
     }
 
     public function cadastro() {
-        $this->checkSession();
+        try{
+            $this->checkSession();
 
-        if (!empty($_POST['id'])) {
-            Sheets::updateSheet();
-            header('Location: /?c=base&a=ver&id='.$_POST['id']);
-            exit;
-        } else {
-            Sheets::addSheet();
+            if (!empty($_POST['id'])) {
+                Sheets::updateSheet();
+                header('Location: /?c=base&a=ver&id='.$_POST['id']);
+                exit;
+            } else {
+                Sheets::addSheet();
+            }
+
+            $auth = new AuthController();
+            $auth->dashboard();
+        }catch(Exception $e){
+            if (!empty($_POST['id'])) {
+                header('Location: /?c=base&a=fixa&id='.$_POST['id'].'&erro=1');
+            } else {
+                header('Location: /?c=base&a=ver&erro=1');
+            }
         }
-
-        $auth = new AuthController();
-        $auth->dashboard();
     }
 
     public function deletar() {
@@ -57,30 +65,15 @@ class BaseController extends Controller {
         $this->view('inventario', ['id' => $_GET['id']]); 
     }
 
-    // public function cadastroInventario() {
-    //     $this->checkSession();
-
-    //     if (!empty($_POST['id'])) {
-    //         Inventory::updateInventory();
-    //     } else {
-    //         Inventory::addInventory();
-    //     }
-        
-    //     header('Location: /?c=auth&a=dashboard');
-    //     exit;
-    // }
-
-    // public function deletarInventario() {
-    //     $this->checkSession();
-
-    //     Inventory::deleteInventory();
-
-    //     $auth = new AuthController();
-    //     $auth->dashboard();
-    // }
-
     public function salvarDados() {
         $this->checkSession();
         Dados::addDados();
     }
 }
+
+
+        // try{
+
+        // }catch(Exception $e){
+
+        // }

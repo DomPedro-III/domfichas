@@ -22,6 +22,9 @@
         <div class="container d-flex justify-content-center">
             <div class="card form-card shadow p-4">
                 <h3 class="text-center mb-4">Cadastro</h3>
+                        <?php if (!empty($_GET['erro'])): ?>
+                        <p style="color:red;"> Ocorreu um erro inesperado.</p>
+                        <?php endif; ?>
 
                 <form action="/?c=base&a=cadastro" method="POST">
                     <input type="hidden" class="form-control" name="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : null; ?>">
