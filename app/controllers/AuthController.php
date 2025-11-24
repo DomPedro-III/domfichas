@@ -13,7 +13,7 @@ class AuthController extends Controller {
             if ($user) {
                 session_start();
                 $_SESSION['user'] = $user;
-                header('Location: /?c=auth&a=dashboard');
+                header('Location: /?c=auth&a=painel');
                 exit;
             }
 
@@ -58,7 +58,7 @@ class AuthController extends Controller {
     public static function addRegistro() {
         // Validar confirmação de senha
         $senha = $_POST['pass'] ?? '';
-        $confirmacao = $_POST['senhaConf'] ?? '';
+        $confirmacao = $_POST['passConf'] ?? '';
 
         // Criar instância para acessar o método de validação
         $auth = new AuthController();
@@ -95,17 +95,17 @@ class AuthController extends Controller {
         if ($user) {
             session_start();
             $_SESSION['user'] = $user;
-            header('Location: /?c=auth&a=dashboard');
+            header('Location: /?c=auth&a=painel');
             exit;
         }
     }
 
-    public function dashboard() {
+    public function painel() {
         $this->checkSession();
 
         $data = Sheets::getList();
 
-        $this->view('dashboard', ['data' => $data]);
+        $this->view('painel', ['data' => $data]);
     }
 
 }

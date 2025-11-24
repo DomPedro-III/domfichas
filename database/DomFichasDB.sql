@@ -16,22 +16,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `dices`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `dices`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `dices` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `fk_sheet` int(11) NOT NULL,
-  `type` int(4) NOT NULL,
-  `result` int(4) NOT NULL,
-  `when` varchar(50) DEFAULT NULL,
+  `user` varchar(100) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `dt_created` datetime DEFAULT current_timestamp(),
+  `dt_updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
-  KEY `fk_results_idx` (`fk_sheet`),
-  CONSTRAINT `fk_results` FOREIGN KEY (`fk_sheet`) REFERENCES `sheets` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  UNIQUE KEY `user_UNIQUE` (`user`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,21 +66,22 @@ CREATE TABLE `sheets` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `dices`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `dices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
+CREATE TABLE `dices` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user` varchar(100) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `dt_created` datetime DEFAULT current_timestamp(),
-  `dt_updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `fk_sheet` int(11) NOT NULL,
+  `type` int(4) NOT NULL,
+  `result` int(4) NOT NULL,
+  `when` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `user_UNIQUE` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  KEY `fk_results_idx` (`fk_sheet`),
+  CONSTRAINT `fk_results` FOREIGN KEY (`fk_sheet`) REFERENCES `sheets` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

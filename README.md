@@ -17,25 +17,6 @@ Sistema completo de gerenciamento de fichas de RPG para o sistema **Cairn**. Per
 - MySQL 10.4
 - Navegador web moderno
 
-## **IMPORTANTE: Configuração para Evitar Conflitos**
-**Para evitar conflito com a pasta `dashboard` do XAMPP, recomenda-se usar um dos seguintes métodos:**
-
-### **Método 1: Nome Personalizado (Recomendado)**
-```bash
-# Renomeie a pasta do projeto para:
-domfichas-rpg
-# ou
-rpg-cairn
-# ou
-minhas-fichas
-```
-
-### **Método 2: Subpasta**
-```bash
-# Mova para uma subpasta:
-C:\xampp\htdocs\projetos\domfichas\
-```
-
 ## Instalação e Configuração
 
 ### 1. Configuração do XAMPP
@@ -86,18 +67,6 @@ php -S localhost:8000 -t C:\xampp\htdocs\domfichas\
 # Em seguida, acesse no navegador:
 http://localhost:8000/
 ```
-
-## **Solução Rápida de Conflito**
-
-Se encontrar erro 404 ou conflito com `dashboard`:
-
-1. **Pare o Apache no XAMPP**
-2. **Renomeie a pasta:**
-   ```bash
-   C:\xampp\htdocs\dashboard  ->  C:\xampp\htdocs\dashboard-backup
-   ```
-3. **Reinicie o Apache**
-4. **Acesse normalmente:** `http://localhost/domfichas/`
 
 ## FUNCIONALIDADES IMPLEMENTADAS
 
@@ -250,7 +219,7 @@ domfichas/
 │   └── views/
 │       ├── login.php
 │       ├── registro.php
-│       ├── dashboard.php
+│       ├── painel.php
 │       ├── fixa.php
 │       └── ver.php
 ├── database/
@@ -282,7 +251,7 @@ extension=pdo_mysql
 ## URLs do Sistema
 - **Login**: `/?c=auth&a=login`
 - **Registro**: `/?c=auth&a=registro` 
-- **Dashboard**: `/?c=auth&a=dashboard`
+- **Painel de Fichas**: `/?c=auth&a=painel`
 - **Nova Ficha**: `/?c=base&a=fixa`
 - **Visualizar Ficha**: `/?c=base&a=ver&id=ID_DA_FICHA`
 

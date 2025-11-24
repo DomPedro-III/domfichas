@@ -31,7 +31,7 @@ class BaseController extends Controller {
             }
 
             $auth = new AuthController();
-            $auth->dashboard();
+            $auth->painel();
         }catch(Exception $e){
             if (!empty($_POST['id'])) {
                 header('Location: /?c=base&a=fixa&id='.$_POST['id'].'&erro=1');
@@ -47,7 +47,7 @@ class BaseController extends Controller {
         Sheets::deleteSheet();
 
         $auth = new AuthController();
-        $auth->dashboard();
+        $auth->painel();
     }
 
     public function ver() {
