@@ -28,7 +28,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Usuário</label>
-                <input type="text" name="email" class="form-control" required placeholder="Digite seu usuário">
+                <input type="text" name="user" class="form-control" required placeholder="Digite seu usuário">
             </div>
 
             <div class="mb-3">

@@ -21,13 +21,19 @@
     <body class="d-flex justify-content-center align-items-center">
         <form action="/?c=auth&a=addRegistro" method="POST">
             <h3 class="text-center mb-3">Registro</h3>
-                <?php if (!empty($_GET['erro'])): ?>
-                <p style="color:red;"> Ocorreu um erro inesperado.</p>
+             <?php 
+                // 🔐 EXIBIR MENSAGENS DE ERRO DA VALIDAÇÃO
+                session_start();
+                if (isset($_SESSION['erro_registro'])): 
+                ?>
+                    <div class="alert alert-danger alert-custom">
+                        <?= $_SESSION['erro_registro'] ?>
+                    </div>
+                    <?php 
+                    // Limpar a mensagem de erro após exibir
+                    unset($_SESSION['erro_registro']); 
+                    ?>
                 <?php endif; ?>
-
-            <?php if (!empty($erro)): ?>
-            <p style="color:red;"><?= $erro ?></p>
-            <?php endif; ?>
 
             <div class="mb-3">
                 <label class="form-label">Usuário</label>
@@ -41,7 +47,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Comfirmar Senha</label>
-                <input type="password" name="senhaConf" class="form-control" required placeholder="Confirme sua senha">
+                <input type="password" name="passConf" class="form-control" required placeholder="Confirme sua senha">
             </div>
 
             <div class="row mb-3">

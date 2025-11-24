@@ -1,7 +1,7 @@
 # DomFichas
 
 ## Descrição
-Sistema de gerenciamento de fichas de RPG para o sistema **Cairn**. Permite criar, editar e gerenciar fichas de personagens de forma intuitiva e organizada, com sistema de rolagem de dados integrado.
+Sistema completo de gerenciamento de fichas de RPG para o sistema **Cairn**. Permite criar, editar, visualizar e gerenciar fichas de personagens de forma intuitiva e organizada, com sistema de rolagem de dados integrado e histórico completo.
 
 ## Tecnologias Utilizadas
 - PHP 8.2
@@ -9,6 +9,7 @@ Sistema de gerenciamento de fichas de RPG para o sistema **Cairn**. Permite cria
 - XAMPP
 - HTML5, CSS3, JavaScript
 - Bootstrap 5
+- jQuery
 
 ## Pré-requisitos
 - XAMPP instalado
@@ -67,33 +68,138 @@ php -S localhost:8000 -t C:\xampp\htdocs\domfichas\
 http://localhost:8000/
 ```
 
-## Primeiro Acesso
+## FUNCIONALIDADES IMPLEMENTADAS
+
+### **Sistema de Autenticação**
+- **Registro de Usuários**: Formulário completo com confirmação de senha
+- **Login Seguro**: Validação de credenciais no banco de dados
+- **Gestão de Sessões**: Controle de acesso às páginas protegidas
+- **Logout**: Encerramento seguro de sessões
+
+### **Gerenciamento de Usuários**
+- **Modelo User**: Classe dedicada para operações de usuário
+- **Login Seguro**: Consultas preparadas para prevenir SQL injection
+- **Registro Automático**: Criação de conta e login automático
+
+### **Sistema Completo de Fichas RPG (Cairn)**
+
+#### **Atributos do Personagem**
+- **Atributos Principais**: Força (STR), Destreza (DEX), Vontade (WIL)
+- **Valores Atuais e Máximos**: Controle individual para cada atributo
+- **Sistema de HP**: Hit Protection com valores atual e máximo
+- **Defesa**: Sistema de armadura (Armor)
+
+#### **Sistema Econômico**
+- **Moedas Múltiplas**: 
+  - Copper Coins (Cobre)
+  - Silver Coins (Prata) 
+  - Golden Coins (Ouro)
+
+#### **Seções de Texto**
+- **Inventário**: Gerenciamento completo de equipamentos e itens
+- **Anotações**: Espaço livre para observações do jogador
+
+### **Sistema de Rolagem de Dados Integrado**
+
+#### **Tipos de Dados Suportados**
+- d4, d6, d8, d10, d12, d20, d100
+- Interface intuitiva com botões dedicados
+
+#### **Histórico de Rolagens**
+- **Armazenamento Automático**: Todas as rolagens são salvas no banco
+- **Visualização em Tempo Real**: Atualização imediata do histórico
+- **Metadados Completos**:
+  - Tipo de dado rolado
+  - Resultado obtido
+  - Data e hora precisa da rolagem
+  - Associação com a ficha específica
+
+#### **Tecnologia do Sistema de Dados**
+- **AJAX**: Rolagens sem recarregar a página
+- **Interface Responsiva**: Feedback visual imediato
+- **Persistência**: Dados salvos permanentemente no MySQL
+
+### **Operações CRUD Completas para Fichas**
+
+#### **CREATE - Criação**
+- Formulário completo de nova ficha
+- Validação de campos obrigatórios
+- Associação automática com usuário logado
+
+#### **READ - Leitura/Visualização**
+- **Dashboard**: Listagem de todas as fichas do usuário
+- **Visualização Detalhada**: Página dedicada para cada ficha
+- **Layout Dividido**: Ficha + Sistema de dados lado a lado
+
+#### **UPDATE - Edição**
+- Formulário de edição pré-preenchido
+- Atualização em tempo real no banco de dados
+- Preservação de todos os dados existentes
+
+#### **DELETE - Exclusão**
+- Exclusão lógica (soft delete)
+- Preservação de dados históricos
+- Interface de confirmação
+
+### **Arquitetura do Sistema**
+
+#### **Padrão MVC (Model-View-Controller)**
+- **Models**: `User.php`, `Sheets.php`, `Dados.php`
+- **Views**: `login.php`, `dashboard.php`, `fixa.php`, `ver.php`
+- **Controllers**: `AuthController.php`, `BaseController.php`
+
+#### **Sistema de Roteamento**
+- URLs amigáveis: `/?c=controller&a=action`
+- Controle centralizado via `index.php`
+- Organização lógica de funcionalidades
+
+#### **Camada de Banco de Dados**
+- **Conexão Centralizada**: Classe `Database.php`
+- **Consultas Preparadas**: Prevenção contra SQL injection
+- **Transações Seguras**: Tratamento de erros com try/catch
+
+### **Interface do Usuário**
+
+#### **Design Responsivo**
+- **Bootstrap 5**: Interface moderna e profissional
+- **Layout Adaptável**: Funciona em desktop e mobile
+- **Componentes UI**: Cards, tabelas, formulários estilizados
+
+#### **Experiência do Usuário**
+- **Navegação Intuitiva**: Fluxo claro entre páginas
+- **Feedback Visual**: Mensagens de erro e confirmação
+- **Carregamento Dinâmico**: AJAX para melhor performance
+
+### **Segurança Implementada**
+
+#### **Proteções de Sessão**
+- Verificação de autenticação em todas as páginas protegidas
+- Redirecionamento automático para login quando necessário
+- Gestão segura de variáveis de sessão
+
+#### **Segurança de Dados**
+- **Consultas Preparadas**: Em todos os modelos
+- **Validação de Entrada**: Tratamento de dados do usuário
+- **Prevenção SQL Injection**: Uso de PDO statements
+
+### **Funcionalidades Avançadas**
+
+#### **Sistema de Histórico**
+- **Rolagens por Ficha**: Cada ficha mantém seu próprio histórico
+- **Limite de Exibição**: Últimas 10 rolagens mostradas
+- **Formatação de Data**: Exibição no formato brasileiro
+
+#### **Gestão de Estado**
+- **Soft Delete**: Fichas marcadas como deletadas sem remoção física
+- **Integridade Referencial**: Chaves estrangeiras no banco
+- **Consistência de Dados**: Validações em múltiplos níveis
+
+## 👤 Primeiro Acesso
 1. Na página inicial, clique em "Registrar"
 2. Crie uma conta com usuário e senha
 3. Faça login com suas credenciais
 4. Comece criando sua primeira ficha!
-
-## Funcionalidades do Sistema
-
-### Gerenciamento de Fichas
-- Criação de fichas Cairn
-- Edição de personagens
-- Visualização detalhada
-- Exclusão de fichas
-- Atributos: Força, Destreza, Vontade
-- Sistema de HP e Armadura
-- Gerenciamento de moedas (Cobre, Prata, Ouro)
-- Inventário e anotações
-
-### Sistema de Dados
-- Rolagem de dados (d4, d6, d8, d10, d12, d20, d100)
-- Histórico de rolagens
-- Salvamento automático no banco de dados
-
-### Autenticação
-- Sistema de registro e login
-- Sessões seguras
-- Logout seguro
+5. Use o sistema de dados integrado para suas rolagens
 
 ## Estrutura do Projeto
 ```
@@ -123,71 +229,32 @@ domfichas/
 ## Estrutura do Banco de Dados
 
 ### Tabelas Principais
-- **users**: Armazena usuários do sistema
-- **sheets**: Armazena as fichas de personagens
-- **dices**: Armazena o histórico de rolagens de dados
+- **users**: Armazena usuários do sistema (id, user, pass, dt_created, dt_updated)
+- **sheets**: Armazena as fichas de personagens com todos os atributos RPG
+- **dices**: Armazena o histórico completo de rolagens de dados
 
 ## Configurações Importantes
 
 ### Configuração do PHP (php.ini)
-Verifique se estas extensões estão habilitadas:
 ```ini
 extension=mysqli
 extension=pdo_mysql
 ```
 
-### Configuração da Conexão
-O arquivo `Database.php` contém as configurações de conexão:
-```php
-return new PDO('mysql:host=localhost;dbname=domdb', 'root', '');
-```
-
 ## Solução de Problemas Comuns
 
-### Erro de Conexão com Banco
-```php
-// Verifique no Database.php:
-$host = 'localhost';
-$dbname = 'domdb';
-$username = 'root';
-$password = ''; // Vazio por padrão no XAMPP
-```
-
-### Página não carrega
-- Verifique se o Apache está rodando
-- Confirme se a pasta está em `htdocs/domfichas/`
-- Verifique permissões de arquivo
-
-### Banco não encontrado
-- Certifique-se que o banco `domdb` foi criado
-- Verifique se o dump SQL foi importado corretamente
-
-### Problemas com Sessões
-- Verifique se as sessões estão habilitadas no PHP
-- Confirme que não há output antes do `session_start()`
+**Erro de Conexão com Banco**: Verifique `Database.php`
+**Página não carrega**: Confirme se Apache está rodando
+**Banco não encontrado**: Importe o `DomFichasDB.sql`
 
 ## URLs do Sistema
-
-- **Login**: `http://localhost/domfichas/?c=auth&a=login`
-- **Registro**: `http://localhost/domfichas/?c=auth&a=registro`
-- **Dashboard**: `http://localhost/domfichas/?c=auth&a=dashboard`
-- **Nova Ficha**: `http://localhost/domfichas/?c=base&a=fixa`
-- **Visualizar Ficha**: `http://localhost/domfichas/?c=base&a=ver&id=ID_DA_FICHA`
-
-## Suporte
-
-Em caso de problemas durante a instalação:
-1. Verifique se todos os serviços do XAMPP estão ativos (verdes)
-2. Confirme a estrutura de diretórios
-3. Valide as credenciais do banco de dados
-4. Verifique se o arquivo `DomFichasDB.sql` foi importado corretamente
-
-Para problemas com o sistema:
-- Verifique os logs do Apache em `xampp/apache/logs/`
-- Confirme as permissões dos arquivos PHP
+- **Login**: `/?c=auth&a=login`
+- **Registro**: `/?c=auth&a=registro` 
+- **Dashboard**: `/?c=auth&a=dashboard`
+- **Nova Ficha**: `/?c=base&a=fixa`
+- **Visualizar Ficha**: `/?c=base&a=ver&id=ID_DA_FICHA`
 
 ---
 
-**Desenvolvido para mestres e jogadores de Cairn RPG**
-
-*Sistema otimizado para PHP 8.2 e MySQL 10.4*
+**Sistema completo de gerenciamento RPG Cairn**  
+*Desenvolvido com arquitetura MVC, interface responsiva e sistema de dados integrado*
