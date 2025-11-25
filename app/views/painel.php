@@ -42,14 +42,14 @@
                                 <td><?php echo $items['wil'] ?></td>
                                 <td><?php echo $items['hit_protection'] ?></td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary" onclick="window.location.href = '/fixa?c=base&a=ver&id=<?php echo $items['id']; ?>'">Visualizar</button>
+                                    <button class="btn btn-sm btn-primary" onclick="window.location.href = '/ficha?c=base&a=ver&id=<?php echo $items['id']; ?>'">Visualizar</button>
                                 </td>
                             </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                     <button class="btn btn-danger" onclick="logout()">Deslogar</button>
-                    <button class="btn btn-success"  onclick="window.location.href = '/fixa?c=base&a=fixa'">Cadastrar</button>
+                    <button class="btn btn-success"  onclick="window.location.href = '/ficha?c=base&a=ficha'">Cadastrar</button>
                 </div>
             </div>
         </div>

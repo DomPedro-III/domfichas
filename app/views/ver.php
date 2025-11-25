@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fixa</title>
+        <title>Ficha</title>
 
         <!-- Bootstrap 5 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -103,10 +103,10 @@
                                     <button class="btn btn-primary w-100" onclick="window.location.href = '/?c=auth&a=painel'">Voltar</button>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-warning w-100" onclick="window.location.href = '/fixa?c=base&a=fixa&id=<?php echo $sheets['id']; ?>'">Editar</button>
+                                    <button class="btn btn-warning w-100" onclick="window.location.href = '/ficha?c=base&a=ficha&id=<?php echo $sheets['id']; ?>'">Editar</button>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-danger w-100" onclick="window.location.href = '/fixa?c=base&a=deletar&id=<?php echo $sheets['id']; ?>'">Deletar</button>                                    
+                                    <button class="btn btn-danger w-100" onclick="window.location.href = '/ficha?c=base&a=deletar&id=<?php echo $sheets['id']; ?>'">Deletar</button>                                    
                                 </div>
                             </div>
 
