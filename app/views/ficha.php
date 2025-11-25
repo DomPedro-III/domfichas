@@ -24,6 +24,7 @@
                 <p style="color:red;"> Ocorreu um erro inesperado.</p>
                 <?php endif; ?>
 
+                <!-- Formulário de cadastro/edição da ficha  -->
                 <form action="/?c=base&a=cadastro" method="POST">
                     <input type="hidden" class="form-control" name="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : null; ?>">
 

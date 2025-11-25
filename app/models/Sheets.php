@@ -1,5 +1,6 @@
 <?php
 class Sheets {
+    // função que busca a lista de fichas da conta, mas excluindo as já deletadas do banco de dados
     public static function getList() {
         $db = Database::connect();
         $stmt = $db->prepare("SELECT * FROM sheets WHERE fk_user = ? AND deleted_at IS NULL");
@@ -7,6 +8,7 @@ class Sheets {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // função que busca a ficha selecionada no banco de dados
     public static function getSheet() {
         $db = Database::connect();
         $stmt = $db->prepare("SELECT * FROM sheets WHERE fk_user = ? AND id = ? LIMIT 1");
@@ -14,6 +16,7 @@ class Sheets {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // função que atualiza a ficha selecionada no banco de dados
     public static function updateSheet() {
         $db = Database::connect();
         $stmt = $db->prepare("
@@ -40,7 +43,8 @@ class Sheets {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-        public static function addSheet() {
+    // função que cadastra a ficha nova no banco de dados
+    public static function addSheet() {
         $db = Database::connect();
         $stmt = $db->prepare("
             INSERT INTO sheets (
@@ -85,6 +89,9 @@ class Sheets {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    // função que 'deleta' a ficha do banco
+    // a função adiciona uma data na tabela fazendo com que ela deixe de ser exibida no painel, mas ainda possibilita a recuperação da mesma via banco de dados
     public static function deleteSheet() {
         $db = Database::connect();
         $stmt = $db->prepare("UPDATE sheets SET deleted_at = NOW() WHERE (id = '" . $_GET['id'] . "')");

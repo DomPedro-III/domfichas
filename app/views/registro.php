@@ -22,7 +22,7 @@
         <form action="/?c=auth&a=addRegistro" method="POST">
             <h3 class="text-center mb-3">Registro</h3>
              <?php 
-                // 🔐 EXIBIR MENSAGENS DE ERRO DA VALIDAÇÃO
+                // EXIBIR MENSAGENS DE ERRO DA VALIDAÇÃO
                 session_start();
                 if (isset($_SESSION['erro_registro'])): 
                 ?>

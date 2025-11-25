@@ -3,12 +3,13 @@ require_once 'app/models/User.php';
 require_once 'app/models/Sheets.php';
 
 class AuthController extends Controller {
+    //função de login
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['user'];
+            $user = $_POST['user'];
             $senha = $_POST['senha'];
 
-            $user = User::login($email, $senha);
+            $user = User::login($user, $senha);
 
             if ($user) {
                 session_start();
@@ -23,31 +24,27 @@ class AuthController extends Controller {
         $this->view('login', ['erro' => $erro ?? null]);
     }
 
+    // função para redirecionar à tela de login
     public function goLogin() {
-
         $this->view('login'); 
     }
 
+    // função para redirecionar à tela de registro de conta
     public function registro() {
-
         $this->view('registro'); 
     }
 
-    // 🔐 FUNÇÃO PARA VALIDAR SENHA
+    // FUNÇÃO PARA VALIDAR SENHA
     private function validarSenha($senha, $confirmacao) {
         $erros = [];
-
-        // Verificar se as senhas coincidem
         if ($senha !== $confirmacao) {
             $erros[] = 'As senhas não coincidem!';
         }
 
-        // Verificar comprimento mínimo (opcional)
         if (strlen($senha) < 6) {
             $erros[] = 'A senha deve ter pelo menos 6 caracteres!';
         }
 
-        // Verificar se a senha não está vazia
         if (empty($senha)) {
             $erros[] = 'A senha não pode estar vazia!';
         }
@@ -55,16 +52,14 @@ class AuthController extends Controller {
         return $erros;
     }
 
+    // função de registro
     public static function addRegistro() {
-        // Validar confirmação de senha
         $senha = $_POST['pass'] ?? '';
         $confirmacao = $_POST['passConf'] ?? '';
 
-        // Criar instância para acessar o método de validação
         $auth = new AuthController();
         $erros = $auth->validarSenha($senha, $confirmacao);
 
-        // Se houver erros, redirecionar de volta ao registro
         if (!empty($erros)) {
             session_start();
             $_SESSION['erro_registro'] = implode('<br>', $erros);
@@ -72,7 +67,6 @@ class AuthController extends Controller {
             exit;
         }
 
-        // Se a validação passou, prosseguir com o registro
         $db = Database::connect();
         $stmt = $db->prepare("
             INSERT INTO users (
@@ -84,10 +78,9 @@ class AuthController extends Controller {
             );
         "); 
 
-        // Usar parâmetros nomeados para mais segurança
         $stmt->execute([
             ':user' => $_POST['user'],
-            ':pass' => $senha // Usar a senha já validada
+            ':pass' => $senha 
         ]);
 
         $user = User::login($_POST['user'], $senha);
@@ -100,6 +93,7 @@ class AuthController extends Controller {
         }
     }
 
+    // Função para redirecionar ao painel de fichas
     public function painel() {
         $this->checkSession();
 

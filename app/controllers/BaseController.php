@@ -5,19 +5,21 @@ require_once 'app/models/Inventory.php';
 require_once 'app/models/Dados.php';
 
 class BaseController extends Controller {
-    public function fixa() {
+    // função para redirecionar à tela de edição da ficha selecionada
+    public function ficha() {
         $this->checkSession();
 
         if (isset($_GET['id'])) {
             $sheets = Sheets::getSheet();
 
-            $this->view('fixa', ['sheets' => $sheets]);
+            $this->view('ficha', ['sheets' => $sheets]);
         } else {
-            $this->view('fixa');
+            $this->view('ficha');
         }
         
     }
 
+    // função de cadastro de fichas
     public function cadastro() {
         try{
             $this->checkSession();
@@ -34,13 +36,14 @@ class BaseController extends Controller {
             $auth->painel();
         }catch(Exception $e){
             if (!empty($_POST['id'])) {
-                header('Location: /?c=base&a=fixa&id='.$_POST['id'].'&erro=1');
+                header('Location: /?c=base&a=ficha&id='.$_POST['id'].'&erro=1');
             } else {
                 header('Location: /?c=base&a=ver&erro=1');
             }
         }
     }
 
+    //função para excluir a ficha selecionada
     public function deletar() {
         $this->checkSession();
 
@@ -50,6 +53,7 @@ class BaseController extends Controller {
         $auth->painel();
     }
 
+    //função para visualização da ficha selecionada
     public function ver() {
         $this->checkSession();
 
@@ -59,12 +63,7 @@ class BaseController extends Controller {
         
     }
 
-    public function inventario() {
-        $this->checkSession();
-
-        $this->view('inventario', ['id' => $_GET['id']]); 
-    }
-
+    // função que inicia o registro do dado rolado ao banco de dados
     public function salvarDados() {
         $this->checkSession();
         Dados::addDados();
