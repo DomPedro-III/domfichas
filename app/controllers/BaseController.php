@@ -1,7 +1,6 @@
 <?php
 require_once 'app/models/Sheets.php';
 require_once 'app/controllers/AuthController.php';
-require_once 'app/models/Inventory.php';
 require_once 'app/models/Dados.php';
 
 class BaseController extends Controller {
