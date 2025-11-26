@@ -3,7 +3,7 @@ class Dados {
     // função para solicitação do histórico de dados da ficha aberta
     public static function getList() {
         $db = Database::connect();
-        $stmt = $db->prepare("SELECT * FROM dices WHERE fk_sheet = ? ORDER BY data_hora DESC LIMIT 10");
+        $stmt = $db->prepare("SELECT * FROM dices WHERE fk_sheet = ? ORDER BY `when` DESC LIMIT 10");
         $stmt->execute([$_GET['id']]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
