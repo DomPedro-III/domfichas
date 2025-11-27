@@ -95,7 +95,7 @@
                                 <label class="card-label"><strong>Inventário</strong></label>
                             </div>
                             <div class="row mb-3">
-                                <textarea disabled class="formcontrol" ><?php echo($sheets['inventory'])?></textarea>
+                                <textarea disabled class="formcontrol"><?php echo($sheets['inventory'])?></textarea>
                             </div>
 
                             <div class="row mb-3">
