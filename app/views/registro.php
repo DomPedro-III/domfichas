@@ -19,7 +19,7 @@
         </style>
     </head>
     <body class="d-flex justify-content-center align-items-center">
-        <form action="/?c=auth&a=addRegistro" method="POST">
+        <form action="/domfichas/?c=auth&a=addRegistro" method="POST">
             <h3 class="text-center mb-3">Registro</h3>
              <?php 
                 // EXIBIR MENSAGENS DE ERRO DA VALIDAÇÃO
@@ -55,7 +55,7 @@
                     <button class="btn btn-primary w-100" type="submit">Registrar</button>
                 </div>
                 <div class="col-md-6">
-                    <button class="btn btn-primary w-100" onclick="window.location.href = '/?c=auth&a=login'">Entrar</button>
+                    <button class="btn btn-primary w-100" onclick="window.location.href = '/domfichas/?c=auth&a=login'">Entrar</button>
                 </div>
             </div>
 

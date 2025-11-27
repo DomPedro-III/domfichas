@@ -41,7 +41,7 @@
                     <button class="btn btn-primary w-100" type="submit">Entrar</button>
                 </div>
                 <div class="col-md-6">
-                    <button class="btn btn-primary w-100" onclick="window.location.href = '/?c=auth&a=registro'">Registrar</button>
+                    <button class="btn btn-primary w-100" onclick="window.location.href = '/domfichas/?c=auth&a=registro'">Registrar</button>
                 </div>
             </div>
 

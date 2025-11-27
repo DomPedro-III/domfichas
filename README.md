@@ -50,10 +50,20 @@ source caminho/para/DomFichasDB.sql;
 
 ## Inicialização do Projeto
 
+### Opção A: Via XAMPP (Recomendada)
+1. **Inicie o XAMPP**
+   - Abra o XAMPP Control Panel
+   - Inicie os serviços **Apache** e **MySQL**
+
+2. **Acesse o Projeto**
+   - Abra seu navegador
+   - Acesse: `http://localhost/domfichas/`
+
+### Opção B: Via PHP Built-in Server
 ### Via PHP Built-in Server
 ```bash
 # Navegue até a pasta do projeto e execute:
-php -S localhost:8000 -t C:caminho\para\domfichas\
+php -S localhost:8000 -t C:\xampp\htdocs\domfichas\
 
 # Em seguida, acesse no navegador:
 http://localhost:8000/

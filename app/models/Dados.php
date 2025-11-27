@@ -1,4 +1,7 @@
 <?php
+// Configurar o fuso horário para America/Sao_Paulo
+date_default_timezone_set('America/Sao_Paulo');
+
 class Dados {
     // função para solicitação do histórico de dados da ficha aberta
     public static function getList() {
@@ -10,22 +13,26 @@ class Dados {
 
     // função que envia os dados rolados ao banco de dados
     public static function addDados() {
-    $db = Database::connect();
-    $stmt = $db->prepare("
-        INSERT INTO dices (
-        fk_sheet,
-        `type`,
-        result,
-        `when`
-        ) VALUES (
-            '" . $_POST['id'] . "',
-            '" . $_POST['tipo_dado'] . "',
-            '" . $_POST['resultado'] . "',
-            '" . $_POST['data_hora'] . "'
-        );
-    ");
+        $db = Database::connect();
+        $stmt = $db->prepare("
+            INSERT INTO dices (
+            fk_sheet,
+            `type`,
+            result,
+            `when`
+            ) VALUES (
+                ?,
+                ?,
+                ?,
+                NOW()
+            );
+        ");
 
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute([
+            $_POST['id'],
+            $_POST['tipo_dado'],
+            $_POST['resultado']
+        ]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

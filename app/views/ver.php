@@ -100,13 +100,13 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-4">
-                                    <button class="btn btn-primary w-100" onclick="window.location.href = '/?c=auth&a=painel'">Voltar</button>
+                                    <button class="btn btn-primary w-100" onclick="window.location.href = '/domfichas/?c=auth&a=painel'">Voltar</button>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-warning w-100" onclick="window.location.href = '/ficha?c=base&a=ficha&id=<?php echo $sheets['id']; ?>'">Editar</button>
+                                    <button class="btn btn-warning w-100" onclick="window.location.href = '/domfichas/ficha?c=base&a=ficha&id=<?php echo $sheets['id']; ?>'">Editar</button>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-danger w-100" onclick="window.location.href = '/ficha?c=base&a=deletar&id=<?php echo $sheets['id']; ?>'">Deletar</button>                                    
+                                    <button class="btn btn-danger w-100" onclick="window.location.href = '/domfichas/ficha?c=base&a=deletar&id=<?php echo $sheets['id']; ?>'">Deletar</button>                                    
                                 </div>
                             </div>
 
@@ -184,7 +184,7 @@
                 // Função para salvar no backend via AJAX
                 function salvarNoBackend(dado, resultado) {
                     $.ajax({
-                        url: '/?c=base&a=salvarDados',
+                        url: '/domfichas/?c=base&a=salvarDados',
                         type: 'POST',
                         data: {
                             id: <?php echo ($sheets['id'])?>,

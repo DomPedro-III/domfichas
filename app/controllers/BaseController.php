@@ -25,7 +25,7 @@ class BaseController extends Controller {
 
             if (!empty($_POST['id'])) {
                 Sheets::updateSheet();
-                header('Location: /?c=base&a=ver&id='.$_POST['id']);
+                header('Location: /domfichas/?c=base&a=ver&id='.$_POST['id']);
                 exit;
             } else {
                 Sheets::addSheet();
@@ -35,9 +35,9 @@ class BaseController extends Controller {
             $auth->painel();
         }catch(Exception $e){
             if (!empty($_POST['id'])) {
-                header('Location: /?c=base&a=ficha&id='.$_POST['id'].'&erro=1');
+                header('Location: /domfichas/?c=base&a=ficha&id='.$_POST['id'].'&erro=1');
             } else {
-                header('Location: /?c=base&a=ver&erro=1');
+                header('Location: /domfichas/?c=base&a=ver&erro=1');
             }
         }
     }

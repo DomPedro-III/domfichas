@@ -14,7 +14,7 @@ class AuthController extends Controller {
             if ($user) {
                 session_start();
                 $_SESSION['user'] = $user;
-                header('Location: /?c=auth&a=painel');
+                header('Location: /domfichas/?c=auth&a=painel');
                 exit;
             }
 
@@ -63,7 +63,7 @@ class AuthController extends Controller {
         if (!empty($erros)) {
             session_start();
             $_SESSION['erro_registro'] = implode('<br>', $erros);
-            header('Location: /?c=auth&a=registro');
+            header('Location: /domfichas/?c=auth&a=registro');
             exit;
         }
 
@@ -88,7 +88,7 @@ class AuthController extends Controller {
         if ($user) {
             session_start();
             $_SESSION['user'] = $user;
-            header('Location: /?c=auth&a=painel');
+            header('Location: /domfichas/?c=auth&a=painel');
             exit;
         }
     }
